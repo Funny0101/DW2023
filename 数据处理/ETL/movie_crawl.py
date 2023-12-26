@@ -1,3 +1,9 @@
+'''
+使用selenium配合谷歌浏览器驱动进行电影信息爬取
+采用边爬边处理的方法，因为有队友下载了完整网页数据，不用担心数据遗漏
+使用amazoncaptcha库处理验证码进行反爬操作
+'''
+
 import selenium
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
@@ -26,7 +32,6 @@ MAX_BACKUP_NUM = 5000
 
 # # 驱动参数设置
 options = ChromeOptions()
-# options = EdgeOptions()
 prefs = {
     'profile.default_content_setting_values': {
         'images': 2,
