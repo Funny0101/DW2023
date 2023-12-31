@@ -24,3 +24,12 @@
    - 提取需要存储到图数据库的信息，比如导演名、演员名、电影id、电影名称、电影类型、电影评论数量等
    - 建立导演和电影间的执导关系以及演员和电影间的演出关系
    - 建立电影与被替换电影之间的ID映射关系
+5. `sentiment_analysis.py`用于对review评论集进行情感分析
+   - 使用python中的Textblob自然语言处理情感分析工具，对每一条评论的text字段进行分析
+   - 获得[-1,1]之间的情感倾向评价
+   - 将[-0.2,0.2]之间评分的评论定义为中性，该区间左侧的为负面评价，右侧为真该你评价
+6. `filter_id.py`用于筛选出两个ProductId集合
+   - 首先从review中提取评论中带有movie、film字段的ProductId，生成csv1，作为潜在的电影集合
+   - 再从movie表中筛选出电影名称字段带有TV、season、episode的电影，生成csv2，作为潜在的TV项
+7. `movie_deduplication.py`用于筛选出符合条件的电影条目
+   - 筛选出movie表中在csv1且不在csv2中的电影，作为去掉TV只保留movie的电影集
